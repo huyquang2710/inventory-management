@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 17, 2023, 5:39:07 AM by Hibernate Tools 6.1.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="inventory_management" name="com.model.Role" optimistic-lock="none" table="role">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="roleName" type="int">
+            <column name="role_name" not-null="true"/>
+        </property>
+        <property name="description" type="string">
+            <column length="200" name="description" not-null="true"/>
+        </property>
+        <property name="activeFlag" type="int">
+            <column name="active_flag" not-null="true"/>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column length="19" name="create_date" not-null="true"/>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column length="19" name="update_date" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="auths" table="auth">
+            <key>
+                <column name="role_id" not-null="true"/>
+            </key>
+            <one-to-many class="model.Auth"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="userRoles" table="user_role">
+            <key>
+                <column name="role_id" not-null="true"/>
+            </key>
+            <one-to-many class="model.UserRole"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -50,21 +50,20 @@
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
-<!-- 	<bean id="sessionFactory"
+	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties"
 			value="classpath:hibernate.properties"></property>
 	</bean>
 
-	Step 3: Setup Hibernate transaction manager
+	
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	Step 4: Enable configuration of transactional behavior based on annotations
 	<tx:annotation-driven
-		transaction-manager="transactionManager" /> -->
+		transaction-manager="transactionManager" />
 </beans>
