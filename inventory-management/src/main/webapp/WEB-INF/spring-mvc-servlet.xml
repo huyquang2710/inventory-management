@@ -26,6 +26,8 @@
 	<!-- Configuration defining views files -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<!-- neu order = 1 cung ko tim thay file, spring se xuat log fileNotFound -->
 		<property name="order" value="1"></property>
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
@@ -82,4 +84,26 @@
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
+
+	<!-- template engine -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+
+		<!-- order = 0, spring se uu tien xu ly -->
+		<!-- neu khong tim thay file, spring se den order = 1 -->
+		<property name="order" value="0"></property>
+
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+	</bean>
+
+	<!-- khai bao file tiles.xml -->
+	<bean id="tilesConfigure"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
 </beans>
