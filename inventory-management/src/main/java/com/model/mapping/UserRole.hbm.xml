@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 17, 2023, 5:39:07 AM by Hibernate Tools 6.1.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="inventory_management" name="com.model.UserRole" optimistic-lock="none" table="user_role">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="com.model.Role" fetch="select" name="role">
+            <column name="role_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.model.Users" fetch="select" name="users">
+            <column name="user_id" not-null="true"/>
+        </many-to-one>
+        <property name="activeFlag" type="int">
+            <column name="active_flag" not-null="true"/>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column length="19" name="create_date" not-null="true"/>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column length="19" name="update_date" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

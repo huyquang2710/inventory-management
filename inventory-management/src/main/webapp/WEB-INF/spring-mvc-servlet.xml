@@ -55,7 +55,20 @@
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties"
 			value="classpath:hibernate.properties"></property>
-		<!-- <property name="mapping"></property> -->
+		<property name="mappingResources">
+			<list>
+				<value>com/model/mapping/Auth.hbm.xml</value>
+				<value>com/model/mapping/Category.hbm.xml</value>
+				<value>com/model/mapping/History.hbm.xml</value>
+				<value>com/model/mapping/Invoice.hbm.xml</value>
+				<value>com/model/mapping/Menu.hbm.xml</value>
+				<value>com/model/mapping/ProductInfo.hbm.xml</value>
+				<value>com/model/mapping/ProductInStock.hbm.xml</value>
+				<value>com/model/mapping/Role.hbm.xml</value>
+				<value>com/model/mapping/UserRole.hbm.xml</value>
+				<value>com/model/mapping/Users.hbm.xml</value>
+			</list>
+		</property>
 	</bean>
 
 	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
