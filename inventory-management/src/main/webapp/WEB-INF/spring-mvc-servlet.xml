@@ -106,4 +106,10 @@
 			</list>
 		</property>
 	</bean>
+
+	<!-- khai bao noi chua file message.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/message/message"></property>
+	</bean>
 </beans>
