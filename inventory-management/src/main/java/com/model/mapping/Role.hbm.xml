@@ -6,8 +6,8 @@
             <column name="id"/>
             <generator class="identity"/>
         </id>
-        <property name="roleName" type="int">
-            <column name="role_name" not-null="true"/>
+        <property name="roleName" type="string">
+            <column length="50" name="role_name" not-null="true"/>
         </property>
         <property name="description" type="string">
             <column length="200" name="description" not-null="true"/>

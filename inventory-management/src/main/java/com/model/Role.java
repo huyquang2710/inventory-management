@@ -11,7 +11,7 @@ import java.util.Set;
 public class Role implements java.io.Serializable {
 
 	private Integer id;
-	private int roleName;
+	private String roleName;
 	private String description;
 	private int activeFlag;
 	private Timestamp createDate;
@@ -22,7 +22,7 @@ public class Role implements java.io.Serializable {
 	public Role() {
 	}
 
-	public Role(int roleName, String description, int activeFlag, Timestamp createDate, Timestamp updateDate) {
+	public Role(String roleName, String description, int activeFlag, Timestamp createDate, Timestamp updateDate) {
 		this.roleName = roleName;
 		this.description = description;
 		this.activeFlag = activeFlag;
@@ -30,8 +30,8 @@ public class Role implements java.io.Serializable {
 		this.updateDate = updateDate;
 	}
 
-	public Role(int roleName, String description, int activeFlag, Timestamp createDate, Timestamp updateDate, Set auths,
-			Set userRoles) {
+	public Role(String roleName, String description, int activeFlag, Timestamp createDate, Timestamp updateDate,
+			Set auths, Set userRoles) {
 		this.roleName = roleName;
 		this.description = description;
 		this.activeFlag = activeFlag;
@@ -49,11 +49,11 @@ public class Role implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public int getRoleName() {
+	public String getRoleName() {
 		return this.roleName;
 	}
 
-	public void setRoleName(int roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 
