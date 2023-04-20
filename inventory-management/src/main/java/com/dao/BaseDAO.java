@@ -13,4 +13,7 @@ public interface BaseDAO<E> {
 	public void save(E instance);
 
 	public void update(E instance);
+
+	public E findOne(Class<E> clazz, String hql, Object... params);
+
 }

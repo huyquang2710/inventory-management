@@ -34,10 +34,11 @@
 			<version>1.4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<!--Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.3.27.Final</version>
+			<version>5.5.7.Final</version>
 		</dependency>
 		<!-- Spring Framework: Core
 		https://mvnrepository.com/artifact/org.springframework/spring-core -->
@@ -56,7 +57,7 @@
 		</dependency>
 
 		<!-- Spring Framework: Web
-		https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		https://mvnrepository.com/artifact/org.springframework/spring-web 	-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -82,7 +83,16 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.4.1.Final</version>
+        </dependency>
+<!--		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>

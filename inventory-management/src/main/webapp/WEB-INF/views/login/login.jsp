@@ -25,6 +25,10 @@
 
     <!-- Custom Theme Style -->
     <link href="<c:url value="resources/build/css/custom.min.css" />" rel="stylesheet">
+    
+    <!-- Custom Css -->
+    <link href="<c:url value="resources/css/custom.css" />" rel="stylesheet">
+  </head>
   </head>
 
   <body class="login">
@@ -34,23 +38,23 @@
 
       <div class="login_wrapper">
         <div class="animate form login_form">
-          <%-- <section class="login_content">
+           <section class="login_content">
             <form:form modelAttribute="loginForm" servletRelativeAction="/processLogin" method="POST">
               <h1>Login Form</h1>
               <div>
-                <form:input path="username" type="text" ccsClass="form-control" placeholder="Username"  />
+                <form:input path="userName" class="form-control" ccsClass="form-control" placeholder="Username"  />
                 <div class="has-error">
-                	<form:errors path="username" cssClass="help-block"></form:errors>
+                	<form:errors path="userName" class="help-block" cssClass="help-block"></form:errors>
                 </div>
               </div>
               <div>
-                <form:input path="password" type="password" ccsClass ="form-control" placeholder="Password" />
+                <form:password path="password" class="form-control" ccsClass ="form-control" placeholder="Password" />
                 <div class="has-error">
-                	<form:errors path="password" cssClass="help-block"></form:errors>
+                	<form:errors path="password" class="help-block" cssClass="help-block"></form:errors>
                 </div>
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                <button class="btn btn-default submit" type="submit" ">Log in</button>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 
@@ -69,7 +73,7 @@
                 </div>
               </div>
             </form:form>
-          </section> --%>
+          </section> 
         </div>
 
         <div id="register" class="animate form registration_form">
