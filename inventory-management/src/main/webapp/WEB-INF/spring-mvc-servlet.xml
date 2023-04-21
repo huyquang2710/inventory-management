@@ -119,4 +119,13 @@
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/processLogin" />
+			<mvc:exclude-mapping path="/resources/**" />
+			<bean class="com.security.FilterSystem"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

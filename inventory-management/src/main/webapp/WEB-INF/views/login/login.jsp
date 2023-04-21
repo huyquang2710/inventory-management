@@ -29,7 +29,6 @@
     <!-- Custom Css -->
     <link href="<c:url value="resources/css/custom.css" />" rel="stylesheet">
   </head>
-  </head>
 
   <body class="login">
     <div>

@@ -127,6 +127,22 @@ public class LoginController {
 
 		return "redirect:/index";
 	}
+	
+	@GetMapping("/access-denied")
+	public String accessDenied() {
+		
+		return "error-page/access-denied";
+	}
+	
+	//logout
+	@GetMapping("/logout")
+	public String logout(HttpSession httpSession) {
+		
+		httpSession.removeAttribute(Constant.MENU_SESSION);
+		httpSession.removeAttribute(Constant.USER_INFO);
+		
+		return "redirect:/login";
+	}
 
 	// sort menu
 	private void sortMenu(List<Menu> menus) {
