@@ -1,7 +1,7 @@
 package com.model;
 // Generated Apr 17, 2023, 5:39:06 AM by Hibernate Tools 6.1.7.Final
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,14 +15,14 @@ public class Category implements java.io.Serializable {
 	private String code;
 	private String description;
 	private int activeFlag;
-	private Timestamp createDate;
-	private Timestamp updateDate;
+	private Date createDate;
+	private Date updateDate;
 	private Set productInfos = new HashSet(0);
 
 	public Category() {
 	}
 
-	public Category(String name, String code, int activeFlag, Timestamp createDate, Timestamp updateDate) {
+	public Category(String name, String code, int activeFlag, Date createDate, Date updateDate) {
 		this.name = name;
 		this.code = code;
 		this.activeFlag = activeFlag;
@@ -30,8 +30,8 @@ public class Category implements java.io.Serializable {
 		this.updateDate = updateDate;
 	}
 
-	public Category(String name, String code, String description, int activeFlag, Timestamp createDate,
-			Timestamp updateDate, Set productInfos) {
+	public Category(String name, String code, String description, int activeFlag, Date createDate, Date updateDate,
+			Set productInfos) {
 		this.name = name;
 		this.code = code;
 		this.description = description;
@@ -81,19 +81,19 @@ public class Category implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	public Timestamp getCreateDate() {
+	public Date getCreateDate() {
 		return this.createDate;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
-		this.createDate = createDate;
+	public void setCreateDate(Date date) {
+		this.createDate = date;
 	}
 
-	public Timestamp getUpdateDate() {
+	public Date getUpdateDate() {
 		return this.updateDate;
 	}
 
-	public void setUpdateDate(Timestamp updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 
@@ -103,6 +103,13 @@ public class Category implements java.io.Serializable {
 
 	public void setProductInfos(Set productInfos) {
 		this.productInfos = productInfos;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", code=" + code + ", description=" + description
+				+ ", activeFlag=" + activeFlag + ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", productInfos=" + productInfos + "]";
 	}
 
 }

@@ -43,16 +43,16 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 	}
 
 	public List<E> findByProperty(String property, Object value) {
-
+ 
 		log.info("find by property");
 
 		StringBuilder queryString = new StringBuilder();
 
-//		queryString.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1 and model.")
-//		.append(property).append(" = ?0 ");
-
 		queryString.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1 and model.")
-				.append(property).append(" =:").append(property);
+		.append(property).append(" = ?0 ");
+
+//		queryString.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1 and model.")
+//				.append(property).append(" =:").append(property);
 
 //		queryString.append(" FROM ").append("Users").append(" AS model WHERE model.activeFlag=1 and model.")
 //		.append(property).append(" = '?0'");
