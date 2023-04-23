@@ -47,4 +47,15 @@ public class ProductService {
 		return categoryDAO.findByProperty(property, object);
 	}
 
+	public List<Category> getAllCategory() {
+		log.info("Find all Category");
+		return categoryDAO.findAll();
+	}
+
+	public Category findByIdCategory(int id) {
+
+		log.info("Find ID:" + id);
+		return categoryDAO.findById(Category.class, id);
+	}
+
 }
