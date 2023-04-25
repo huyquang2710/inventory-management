@@ -15,5 +15,7 @@ public interface BaseDAO<E> {
 	public void update(E instance);
 
 	public E findOne(Class<E> clazz, String hql, Object... params);
+	
+	public List<E> findByProperty(Class<E> clazz, String hql, Object... params);
 
 }

@@ -13,20 +13,24 @@
         <title>Inventory Management! | </title>
 
         <!-- Bootstrap -->
-        <link href="<c:url value="resources/vendors/bootstrap/dist/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/vendors/bootstrap/dist/css/bootstrap.min.css" />" rel="stylesheet">
         <!-- Font Awesome -->
-        <link href="<c:url value="resources/vendors/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/vendors/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
 
         <!-- NProgress -->
-        <link href="<c:url value="resources/vendors/nprogress/nprogress.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/vendors/nprogress/nprogress.css" />" rel="stylesheet">
 
         <!-- jQuery custom content scroller -->
-        <link href="<c:url value="resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />"
+        <link href="<c:url value="/resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />"
         rel="stylesheet"/>
-
-
+ 
         <!-- Custom Theme Style -->
-        <link href="<c:url value="resources/build/css/custom.min.css" />" rel="stylesheet">
+        <link href="<c:url value="/resources/build/css/custom.min.css" />" rel="stylesheet">
+        
+        <!-- Custom Css -->
+        <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">
+                <!-- jQuery -->
+        <script src="<c:url value="/resources/vendors/jquery/dist/jquery.min.js" />"></script>
       </head>
 
       <body class="nav-md footer_fixed">
@@ -44,7 +48,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                   <div class="profile_pic">
-                    <img src="<c:url value="resources/images/img.jpg" />" alt="..." class="img-circle profile_img">
+                    <img src="<c:url value="/resources/images/img.jpg" />" alt="..." class="img-circle profile_img">
                   </div>
                   <div class="profile_info">
                     <span>Welcome,</span>
@@ -83,7 +87,8 @@
             <!-- /top navigation -->
 
             <!-- page content -->
-            <tiles:insertAttribute name="body"></tiles:insertAttribute>
+            <%-- <tiles:insertAttribute name="body"></tiles:insertAttribute> --%>
+            <tiles:insertAttribute name="body"/>
             <!-- /page content -->
 
             <!-- footer content -->
@@ -92,20 +97,19 @@
           </div>
         </div>
 
-        <!-- jQuery -->
-        <script src="<c:url value="resources/vendors/jquery/dist/jquery.min.js" />"></script>
+
         <!-- Bootstrap -->
-        <script src="<c:url value="resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js" />"></script>
+        <script src="<c:url value="/resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js" />"></script>
         <!-- FastClick -->
-        <script src="<c:url value="resources/vendors/fastclick/lib/fastclick.js" />"></script>
+        <script src="<c:url value="/resources/vendors/fastclick/lib/fastclick.js" />"></script>
         <!-- NProgress -->
-        <script src="<c:url value="resources/vendors/nprogress/nprogress.js" />"></script>
+        <script src="<c:url value="/resources/vendors/nprogress/nprogress.js" />"></script>
         <!-- jQuery custom content scroller -->
         <script src="<c:url value="
-          resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" />"></script>
+          /resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" />"></script>
 
         <!-- Custom Theme Scripts -->
-        <script src="<c:url value="resources/build/js/custom.min.js" />"></script>
+        <script src="<c:url value="/resources/build/js/custom.min.js" />"></script>
       </body>
 
       </html>

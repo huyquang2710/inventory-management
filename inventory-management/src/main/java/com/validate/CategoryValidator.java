@@ -31,8 +31,15 @@ public class CategoryValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, Constant.DESCRIPTION, Constant.MSG_REQUIRED);
 
 		if (category.getCode() != null) {
-			List<Category> result = productService.findCategory(Constant.CODE, category);
+			List<Category> result = productService.findCategoryByCode(category.getCode());
 			if (result != null && !result.isEmpty()) {
+				//check khi update
+				if (category.getId() != null && category.getId() != 0) {
+					if (result.get(0).getId() != category.getId()) {
+						errors.rejectValue(Constant.CODE, Constant.MSG_CODE_EXIST);
+					}
+				}
+				// khi insert
 				errors.rejectValue(Constant.CODE, Constant.MSG_CODE_EXIST);
 			}
 		}

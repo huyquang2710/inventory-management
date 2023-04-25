@@ -58,4 +58,10 @@ public class ProductService {
 		return categoryDAO.findById(Category.class, id);
 	}
 
+	public List<Category> findCategoryByCode(String code) {
+		log.info("Find Category By Code:" + code);
+
+		return categoryDAO.findCategoryByCode(code);
+	}
+
 }

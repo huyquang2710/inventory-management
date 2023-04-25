@@ -43,13 +43,13 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 	}
 
 	public List<E> findByProperty(String property, Object value) {
- 
+
 		log.info("find by property");
 
 		StringBuilder queryString = new StringBuilder();
 
 		queryString.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1 and model.")
-		.append(property).append(" = ?0 ");
+				.append(property).append(" = ?0 ");
 
 //		queryString.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1 and model.")
 //				.append(property).append(" =:").append(property);
@@ -115,5 +115,22 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 //		log.info("name table: " + generic);
 		return strAfter;
 
+	}
+
+	@Override
+	public List<E> findByProperty(Class<E> clazz, String hql, Object... params) {
+		TypedQuery<E> query = sessionFactory.getCurrentSession().createQuery(hql, clazz);
+
+		// dem co bao nhieu param
+		for (int i = 0; i < params.length; i++) {
+			query.setParameter(i, params[i]);
+		}
+		// tranh truong hop query null se bi loi. nen dung List
+		List<E> result = query.getResultList();
+		if (result.isEmpty()) {
+			return null;
+		}
+		// vi fine one nen get(0)
+		return result;
 	}
 }
