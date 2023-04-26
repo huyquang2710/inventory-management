@@ -31,6 +31,11 @@
         <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">
                 <!-- jQuery -->
         <script src="<c:url value="/resources/vendors/jquery/dist/jquery.min.js" />"></script>
+        
+            <!-- PNotify -->
+   		<link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.css"/>" rel="stylesheet">
+    	<link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.buttons.css"/>" rel="stylesheet">
+    	<link href="<c:url value="/resources/vendors/pnotify/dist/pnotify.nonblock.css" />" rel="stylesheet">
       </head>
 
       <body class="nav-md footer_fixed">
@@ -107,9 +112,13 @@
         <!-- jQuery custom content scroller -->
         <script src="<c:url value="
           /resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" />"></script>
-
-        <!-- Custom Theme Scripts -->
-        <script src="<c:url value="/resources/build/js/custom.min.js" />"></script>
+            <!-- PNotify -->
+   		<script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.js" />"></script>
+   		<script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.buttons.js" />"></script >
+  		<script src="<c:url value="/resources/vendors/pnotify/dist/pnotify.nonblock.js" />"></script>
+  		 
+  		<!-- Custom Theme Scripts -->
+        <script src="<c:url value="/resources/build/js/custom.js" />"></script>
       </body>
 
       </html>

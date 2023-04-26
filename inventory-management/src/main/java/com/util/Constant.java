@@ -23,4 +23,8 @@ public class Constant {
 	public static final String MSG_REQUIRED = "msg.required";
 
 	public static final String MSG_CODE_EXIST = "msg.code.exist";
+	
+	public static final String MSG_ERROR = "errorMsg";
+	
+	public static final String MSG_SUCCESS = "successMsg";
 }

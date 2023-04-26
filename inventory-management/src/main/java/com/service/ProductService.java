@@ -18,7 +18,7 @@ public class ProductService {
 	@Autowired
 	private CategoryDAO<Category> categoryDAO;
 
-	public void save(Category category) {
+	public void save(Category category) throws Exception {
 		log.info("Save Category:" + category.toString());
 
 		category.setActiveFlag(1);
@@ -27,14 +27,14 @@ public class ProductService {
 		categoryDAO.save(category);
 	}
 
-	public void update(Category category) {
+	public void update(Category category) throws Exception {
 		log.info("Update Category:" + category.toString());
 
 		category.setUpdateDate(new Date());
 		categoryDAO.update(category);
 	}
 
-	public void delete(Category category) {
+	public void delete(Category category) throws Exception {
 		category.setActiveFlag(0);
 		log.info("Delete Category:" + category.toString());
 

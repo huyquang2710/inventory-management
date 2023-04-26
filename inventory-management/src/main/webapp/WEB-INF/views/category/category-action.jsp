@@ -25,7 +25,7 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="code">Code <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<form:input path="code" class="form-control " disabled="${viewOnly }" />
+												<form:input path="code" class="form-control" style="text-transform:uppercase" disabled="${viewOnly }" />
 											</div>
 											 <div class="has-error">
                 								<form:errors path="code" class="help-block" cssClass="help-block"></form:errors>

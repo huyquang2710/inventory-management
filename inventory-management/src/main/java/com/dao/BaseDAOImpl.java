@@ -29,8 +29,8 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 		log.info("find all record from db");
 
 		StringBuilder query = new StringBuilder();
-		//query.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
-		query.append(" FROM ").append("Category").append(" AS model WHERE model.activeFlag=1");
+		query.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
+//		query.append(" FROM ").append("Category").append(" AS model WHERE model.activeFlag=1");
 
 		log.info("Query find all => " + query.toString());
 

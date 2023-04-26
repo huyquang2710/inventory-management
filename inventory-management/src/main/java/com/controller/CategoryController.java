@@ -4,6 +4,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.dao.BaseDAOImpl;
 import com.model.Category;
 import com.service.ProductService;
+import com.util.Constant;
 import com.validate.CategoryValidator;
 
 @Controller
@@ -48,8 +51,17 @@ public class CategoryController {
 	}
 
 	@GetMapping("/category/list")
-	public String showCategoryList(Model model) {
+	public String showCategoryList(Model model, HttpSession session) {
 		List<Category> categories = productService.getAllCategory();
+
+		if (session.getAttribute(Constant.MSG_SUCCESS) != null) {
+			model.addAttribute(Constant.MSG_SUCCESS, session.getAttribute(Constant.MSG_SUCCESS));
+			session.removeAttribute(Constant.MSG_SUCCESS);
+		}
+		if (session.getAttribute(Constant.MSG_ERROR) != null) {
+			model.addAttribute(Constant.MSG_ERROR, session.getAttribute(Constant.MSG_ERROR));
+			session.removeAttribute(Constant.MSG_ERROR);
+		}
 		model.addAttribute("categories", categories);
 		return "category-list";
 	}
@@ -93,11 +105,12 @@ public class CategoryController {
 	}
 
 	@PostMapping("/category/save")
-	public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult result) {
+	public String save(Model model, @ModelAttribute("modelForm") @Validated Category category, BindingResult result,
+			HttpSession session) {
 		if (result.hasErrors()) {
-			if(category.getId() != null) {
+			if (category.getId() != null) {
 				model.addAttribute("titlePage", "Update Category");
-				
+
 			} else {
 				model.addAttribute("titlePage", "Insert Category");
 			}
@@ -106,23 +119,40 @@ public class CategoryController {
 			return "category-action";
 		}
 		if (category.getId() != null && category.getId() != 0) {
-			productService.update(category);
-			model.addAttribute("message", "Update Success");
+			try {
+				productService.update(category);
+				session.setAttribute(Constant.MSG_SUCCESS, "Update Success");
+			} catch (Exception e) {
+				e.printStackTrace();
+				session.setAttribute(Constant.MSG_ERROR, "Update Has Error");
+			}
+
 		} else {
-			productService.save(category);
-			model.addAttribute("message", "Insert Success");
+			try {
+				productService.save(category);
+				session.setAttribute(Constant.MSG_SUCCESS, "Insert Success");
+			} catch (Exception e) {
+				e.printStackTrace();
+				session.setAttribute(Constant.MSG_ERROR, "Insert Has Error");
+			}
 		}
-		return showCategoryList(model);
+		return "redirect:/category/list";
 	}
 
 	@GetMapping("/category/delete/{id}")
-	public String delete(Model model, @PathVariable("id") int id) {
+	public String delete(Model model, @PathVariable("id") int id, HttpSession session) {
 		log.info("Delete category id: " + id);
 
 		Category category = productService.findByIdCategory(id);
 
 		if (category != null) {
-			productService.delete(category);
+			try {
+				productService.delete(category);
+				session.setAttribute(Constant.MSG_SUCCESS, "Delete Success");
+			} catch (Exception e) {
+				e.printStackTrace();
+				session.setAttribute(Constant.MSG_ERROR, "Delete Has Error");
+			}
 		}
 		return "redirect:/category/list";
 	}

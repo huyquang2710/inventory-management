@@ -53,9 +53,7 @@
                           </c:forEach>
                         </tbody>
                       </table> 
-                    </div>
-							
-						
+                    </div>	
                   </div>
                 </div>
               </div>
@@ -68,4 +66,29 @@
 			window.location.href = '<c:url value="/category/delete/" />' + id;
 		}
 	}
+	$(document).ready(function() {
+    processMessage();
+  });
+
+  function processMessage() {
+    var successMsg = '${successMsg}';
+    var errorMsg = '${errorMsg}';
+    if(successMsg) {
+      new PNotify({
+          title: 'Success',
+          text: successMsg,
+          type: 'success',
+          styling: 'bootstrap3'
+      });
+    }
+    if(errorMsg) {
+      new PNotify({
+          title: 'Error',
+          text: errorMsg,
+          type: 'error',
+          styling: 'bootstrap3'
+      });
+    }
+  }
+   
 </script>
