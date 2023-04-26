@@ -2,6 +2,7 @@ package com.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.TypedQuery;
 
@@ -25,16 +26,30 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 	private SessionFactory sessionFactory;
 
 	// where: activeFlag = 1
-	public List<E> findAll() {
+	public List<E> findAll(String queryStr, Map<String, Object> mapParams) {
 		log.info("find all record from db");
 
-		StringBuilder query = new StringBuilder();
-		query.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
+		StringBuilder queryFindAll = new StringBuilder();
+		queryFindAll.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
 //		query.append(" FROM ").append("Category").append(" AS model WHERE model.activeFlag=1");
+
+		// search
+		if (queryStr != null && !queryStr.isEmpty()) {
+			queryFindAll.append(queryStr);
+		}
+
+		Query<E> query = sessionFactory.getCurrentSession().createQuery(queryFindAll.toString());
+
+		// set params vao cau query
+		if (mapParams != null && !mapParams.isEmpty()) {
+			for (String key : mapParams.keySet()) {
+				query.setParameter(key, mapParams.get(key));
+			}
+		}
 
 		log.info("Query find all => " + query.toString());
 
-		return sessionFactory.getCurrentSession().createQuery(query.toString()).list();
+		return query.list();
 	}
 
 	// find id

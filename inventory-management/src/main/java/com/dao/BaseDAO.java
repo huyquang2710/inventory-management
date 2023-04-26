@@ -2,9 +2,10 @@ package com.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public interface BaseDAO<E> {
-	public List<E> findAll();
+	public List<E> findAll(String queryStr, Map<String, Object> mapParams);
 
 	public E findById(Class<E> e, Serializable id);
 
@@ -15,7 +16,7 @@ public interface BaseDAO<E> {
 	public void update(E instance);
 
 	public E findOne(Class<E> clazz, String hql, Object... params);
-	
+
 	public List<E> findByProperty(Class<E> clazz, String hql, Object... params);
 
 }

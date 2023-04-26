@@ -1,8 +1,11 @@
 package com.service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.dao.BaseDAOImpl;
 import com.dao.CategoryDAO;
 import com.model.Category;
+import com.util.Constant;
 
 @Service
 public class ProductService {
@@ -47,9 +51,30 @@ public class ProductService {
 		return categoryDAO.findByProperty(property, object);
 	}
 
-	public List<Category> getAllCategory() {
+	public List<Category> getAllCategory(Category category) {
 		log.info("Find all Category");
-		return categoryDAO.findAll();
+
+		// search
+		StringBuilder queryStr = new StringBuilder();
+
+		// luu nhung param truyen vao
+		Map<String, Object> mapPamrams = new HashMap<>();
+		if (category != null) {
+			if (category.getId() != null && category.getId() != 0) {
+				queryStr.append(" AND model.id = :id");
+				mapPamrams.put(Constant.ID, category.getId());
+			}
+			if (category.getCode() != null && !StringUtils.isEmpty(category.getCode())) {
+				queryStr.append(" AND model.code = :code");
+				mapPamrams.put(Constant.CODE, category.getCode());
+			}
+			if (category.getName() != null && !StringUtils.isEmpty(category.getName())) {
+				queryStr.append(" AND model.name = :name");
+				mapPamrams.put(Constant.NAME, category.getName());
+			}
+		}
+
+		return categoryDAO.findAll(queryStr.toString(), mapPamrams);
 	}
 
 	public Category findByIdCategory(int id) {
