@@ -18,6 +18,9 @@
         <property name="description" type="string">
             <column length="65535" name="description"/>
         </property>
+        <property name="imgUrl" type="string">
+            <column length="300" name="img_url"/>
+        </property>
         <property name="activeFlag" type="int">
             <column name="active_flag" not-null="true"/>
         </property>

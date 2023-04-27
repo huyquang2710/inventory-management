@@ -14,7 +14,7 @@ public class CategoryDAOImpl extends BaseDAOImpl<Category> implements CategoryDA
 	@Override
 	public List<Category> findCategoryByCode(String code) {
 
-		String hql = "SELECT o FROM Category o WHERE o.code = ?0";
+		String hql = "SELECT o FROM Category o WHERE o.code = ?0 AND o.activeFlag=1";
 
 		return super.findByProperty(Category.class, hql, code);
 	}

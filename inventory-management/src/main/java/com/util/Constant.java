@@ -1,7 +1,7 @@
 package com.util;
 
 public class Constant {
-	
+
 	public static final String USER_INFO = "userInfo";
 
 	public static final String USERNAME = "userName";
@@ -20,11 +20,19 @@ public class Constant {
 
 	public static final String DESCRIPTION = "description";
 
+	public static final String MULTIPART_FILE = "multipartFile";
+
 	public static final String MSG_REQUIRED = "msg.required";
 
 	public static final String MSG_CODE_EXIST = "msg.code.exist";
-	
+
+	public static final String MSG_FILE_EXTENSION_ERROR = "msg.file.extension.error";
+
 	public static final String MSG_ERROR = "errorMsg";
-	
+
 	public static final String MSG_SUCCESS = "successMsg";
+
+	public static final String JPG = "jpg";
+
+	public static final String PNG = "png";
 }
