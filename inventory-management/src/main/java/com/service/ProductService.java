@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.dao.BaseDAOImpl;
 import com.dao.CategoryDAO;
 import com.model.Category;
+import com.model.Paging;
 import com.util.Constant;
 
 @Service
@@ -51,7 +52,7 @@ public class ProductService {
 		return categoryDAO.findByProperty(property, object);
 	}
 
-	public List<Category> getAllCategory(Category category) {
+	public List<Category> getAllCategory(Category category, Paging paging) {
 		log.info("Find all Category");
 
 		// search
@@ -69,12 +70,12 @@ public class ProductService {
 				mapPamrams.put(Constant.CODE, category.getCode());
 			}
 			if (category.getName() != null && !StringUtils.isEmpty(category.getName())) {
-				queryStr.append(" AND model.name = :name");
-				mapPamrams.put(Constant.NAME, category.getName());
+				queryStr.append(" AND model.name LIKE :name");
+				mapPamrams.put(Constant.NAME, "%" + category.getName() + "%");
 			}
 		}
 
-		return categoryDAO.findAll(queryStr.toString(), mapPamrams);
+		return categoryDAO.findAll(queryStr.toString(), mapPamrams, paging);
 	}
 
 	public Category findByIdCategory(int id) {

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.model.Paging;
 import com.util.Constant;
 
 @Repository
@@ -26,25 +27,41 @@ public class BaseDAOImpl<E> implements BaseDAO<E> {
 	private SessionFactory sessionFactory;
 
 	// where: activeFlag = 1
-	public List<E> findAll(String queryStr, Map<String, Object> mapParams) {
+	public List<E> findAll(String queryStr, Map<String, Object> mapParams, Paging paging) {
 		log.info("find all record from db");
+
+		// count query / page
+		StringBuilder countQuery = new StringBuilder();
 
 		StringBuilder queryFindAll = new StringBuilder();
 		queryFindAll.append(" FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
 //		query.append(" FROM ").append("Category").append(" AS model WHERE model.activeFlag=1");
 
+		countQuery.append(" SELECT COUNT(*) FROM ").append(getGenericName()).append(" AS model WHERE model.activeFlag=1");
+
 		// search
 		if (queryStr != null && !queryStr.isEmpty()) {
 			queryFindAll.append(queryStr);
+			countQuery.append(queryStr);
 		}
 
 		Query<E> query = sessionFactory.getCurrentSession().createQuery(queryFindAll.toString());
+		Query<E> countQ = sessionFactory.getCurrentSession().createQuery(countQuery.toString());
 
 		// set params vao cau query
 		if (mapParams != null && !mapParams.isEmpty()) {
 			for (String key : mapParams.keySet()) {
 				query.setParameter(key, mapParams.get(key));
+				countQ.setParameter(key, mapParams.get(key));
 			}
+		}
+
+		// page
+		if (paging != null) {
+			query.setFirstResult(paging.getOffset()); // FROM model WHERE model.activeFlag = 1 LIMIT 0, 10
+			query.setMaxResults(paging.getRecordPerPage());
+			long totalRecords = (long) countQ.uniqueResult();
+			paging.setTotalRows(totalRecords);
 		}
 
 		log.info("Query find all => " + query.toString());
