@@ -13,10 +13,11 @@
 
               <div class="x_content">
                 <a href="<c:url value="/category/add" />" class="btn btn-app"><i class="fa fa-plus"></i>Add</a>
+                
                 <!-- search start -->
                 <div class="container" style="padding: 5px;">
                   <form:form modelAttribute="searchForm" cssClass="form-horizontal form-label-left"
-                    class="form-horizontal form-label-left" servletRelativeAction="/category/list" method="POST">
+                    class="form-horizontal form-label-left" servletRelativeAction="/category/list/1" method="POST">
                     <div class="item form-group">
                       <label class="col-form-label col-md-3 col-sm-3 label-align" for="code">ID
                       </label>
