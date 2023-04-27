@@ -63,7 +63,7 @@ public class CategoryController {
 			@PathVariable("page") int page) {
 
 		// page
-		Paging paging = new Paging(3);
+		Paging paging = new Paging(5);
 		paging.setIndexPage(page);
 
 		List<Category> categories = productService.getAllCategory(category, paging);

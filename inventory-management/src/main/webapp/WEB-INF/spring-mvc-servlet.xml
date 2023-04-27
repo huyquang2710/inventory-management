@@ -22,7 +22,8 @@
 	<!-- tro toi cac file static nhu css, js -> giup spring hieu -->
 	<mvc:resources location="/static/"
 		mapping="/resources/**" />
-
+	<mvc:resources location="file:/${upload.servlet.location}"
+		mapping="/upload/**" />
 	<!-- Configuration defining views files -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,8 +39,11 @@
 	</bean>
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
+		<property name="locations">
+			<list>
 			<value>classpath:jdbc.properties</value>
+			<value>classpath:config.properties</value>
+			</list>
 		</property>
 	</bean>
 
