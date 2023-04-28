@@ -13,6 +13,7 @@ public class ConfigLoader {
 	private ConfigLoader() {
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(proFileName);
 		if (inputStream != null) {
+				properties = new Properties();
 			try {
 				properties.load(inputStream);
 			} catch (IOException e) {

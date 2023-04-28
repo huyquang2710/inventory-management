@@ -163,11 +163,16 @@ public class ProductInfoController {
 				mapCategories.put(String.valueOf(category.getId()), category.getName());
 			}
 			model.addAttribute("mapCategory", mapCategories);
-			
+
 			model.addAttribute("modelForm", productInfo);
 			model.addAttribute("viewOnly", false);
 			return "productInfo-action";
 		}
+		// set category
+		Category category = new Category();
+		category.setId(productInfo.getCateId());
+		productInfo.setCategory(category);
+
 		if (productInfo.getId() != null && productInfo.getId() != 0) {
 			try {
 				productInfoService.update(productInfo);
@@ -206,4 +211,5 @@ public class ProductInfoController {
 		}
 		return "redirect:/product-info/list";
 	}
+
 }

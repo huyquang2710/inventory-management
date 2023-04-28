@@ -114,7 +114,7 @@ public class ProductInfoService {
 
 			// check xem file tao chua, tranh filenotfound
 			if (!dir.exists()) {
-				dir.mkdir();
+				dir.mkdirs();
 			}
 			// lat ten file: lay time hien tai + file name
 			String fileName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();

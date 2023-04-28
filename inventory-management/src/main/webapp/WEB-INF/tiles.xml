@@ -25,8 +25,18 @@
 			value="/WEB-INF/views/category/category-action.jsp"></put-attribute>
 	</definition>
 	
-		<definition name="category-list" extends="master">
+	<definition name="category-list" extends="master">
 		<put-attribute name="body"
 			value="/WEB-INF/views/category/category-list.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="productInfo-action" extends="master">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product-info/productInfo-action.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="productInfo-list" extends="master">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product-info/productInfo-list.jsp"></put-attribute>
 	</definition>
 </tiles-definitions> 

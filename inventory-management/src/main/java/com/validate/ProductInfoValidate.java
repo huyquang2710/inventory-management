@@ -30,7 +30,10 @@ public class ProductInfoValidate implements Validator {
 		ProductInfo productInfo = (ProductInfo) target;
 		ValidationUtils.rejectIfEmpty(errors, Constant.CODE, Constant.MSG_REQUIRED);
 		ValidationUtils.rejectIfEmpty(errors, Constant.NAME, Constant.MSG_REQUIRED);
-		ValidationUtils.rejectIfEmpty(errors, Constant.DESCRIPTION, Constant.MSG_REQUIRED);
+
+		if (productInfo.getId() != null) {
+			ValidationUtils.rejectIfEmpty(errors, Constant.DESCRIPTION, Constant.MSG_REQUIRED);
+		}
 		ValidationUtils.rejectIfEmpty(errors, Constant.MULTIPART_FILE, Constant.MSG_REQUIRED);
 
 		if (productInfo.getCode() != null) {
@@ -49,7 +52,7 @@ public class ProductInfoValidate implements Validator {
 		}
 		if (productInfo.getMultipartFile() != null) {
 			String extension = FilenameUtils.getExtension(productInfo.getMultipartFile().getOriginalFilename());
-			if (!extension.equals(Constant.JPG) || !extension.equals(Constant.PNG)) {
+			if (!extension.equals(Constant.JPG) && !extension.equals(Constant.PNG)) {
 				errors.rejectValue(Constant.MULTIPART_FILE, Constant.MSG_FILE_EXTENSION_ERROR);
 			}
 		}
