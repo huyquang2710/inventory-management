@@ -35,22 +35,24 @@ public class ProductInfoService {
 		productInfo.setUpdateDate(new Date());
 
 		// tao file
-		processUploadFIle(productInfo.getMultipartFile());
+		String fileName = System.currentTimeMillis() + "_" + productInfo.getMultipartFile().getOriginalFilename();
+		processUploadFIle(productInfo.getMultipartFile(), fileName);
 
 		// get ten file de luu vao db
-		productInfo.setImgUrl(
-				"/upload/" + System.currentTimeMillis() + "_" + productInfo.getMultipartFile().getOriginalFilename());
+		productInfo.setImgUrl("/upload/" + fileName);
 		productInfoDAO.save(productInfo);
 	}
 
 	public void update(ProductInfo productInfo) throws Exception {
 		log.info("Update ProductInfo:" + productInfo.toString());
 
-		// tao file
-		processUploadFIle(productInfo.getMultipartFile());
-		if (productInfo.getMultipartFile() != null) {
-			productInfo.setImgUrl("/upload/" + System.currentTimeMillis() + "_"
-					+ productInfo.getMultipartFile().getOriginalFilename());
+		if (!productInfo.getMultipartFile().getOriginalFilename().isEmpty()) {
+			// tao file
+			String fileName = System.currentTimeMillis() + "_" + productInfo.getMultipartFile().getOriginalFilename();
+			processUploadFIle(productInfo.getMultipartFile(), fileName);
+
+			// get ten file de luu vao db
+			productInfo.setImgUrl("/upload/" + fileName);
 		}
 
 		productInfo.setUpdateDate(new Date());
@@ -108,16 +110,15 @@ public class ProductInfoService {
 		return productInfoDAO.findProductInfoByCode(code);
 	}
 
-	private void processUploadFIle(MultipartFile multipartFile) throws IllegalStateException, IOException {
-		if (multipartFile != null) {
+	private void processUploadFIle(MultipartFile multipartFile, String fileName)
+			throws IllegalStateException, IOException {
+		if (!multipartFile.getOriginalFilename().isEmpty()) {
 			File dir = new File(ConfigLoader.getInstance().getValue("upload.location"));
 
 			// check xem file tao chua, tranh filenotfound
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			// lat ten file: lay time hien tai + file name
-			String fileName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
 
 			// tao file
 			File file = new File(ConfigLoader.getInstance().getValue("upload.location"), fileName);
