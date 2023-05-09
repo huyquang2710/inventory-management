@@ -77,7 +77,7 @@
                         <td class=" ">${ productinfo.id }</td>
                         <td class=" ">${ productinfo.code }</td>
                         <td class=" ">${ productinfo.name }</td>
-                        <td class=" "><img src="<c:url value="${productinfo.imgUrl  }" />" width="100px" height="100px" /></td>
+                        <td class=" "><img src="<c:url value="${productinfo.imgUrl}"/>" width="100px" height="100px"/></td>
                         <td class=" ">${ productinfo.createDate }</td>
                         <td class="text-center"><a href="<c:url value="/product-info/view/${productinfo.id }" />" class="btn
                           btn-round btn-default">View</a></td>

@@ -54,8 +54,7 @@
         <!-- NProgress -->
         <script src="<c:url value="resources/vendors/nprogress/nprogress.js" />"></script>
         <!-- jQuery custom content scroller -->
-        <script src="<c:url value="
-          resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" />"></script>
+        <script src="<c:url value="resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" />"></script>
 
         <!-- Custom Theme Scripts -->
         <script src="<c:url value="resources/build/js/custom.min.js" />"></script>
