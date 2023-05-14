@@ -9,16 +9,19 @@
         <many-to-one class="com.model.ProductInfo" fetch="select" name="productInfo">
             <column name="product_id" not-null="true"/>
         </many-to-one>
-        <property name="qty" type="int">
+        <property generated="never" lazy="false"  name="qty" type="int" unique="false">
             <column name="qty" not-null="true"/>
         </property>
-        <property name="activeFlag" type="int">
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="price" not-null="true" precision="15"/>
+        </property>
+        <property generated="never" lazy="false"  name="activeFlag" type="int" unique="false">
             <column name="active_flag" not-null="true"/>
         </property>
-        <property name="createDate" type="timestamp">
+        <property generated="never" lazy="false"  name="createDate" type="timestamp" unique="false">
             <column length="19" name="create_date" not-null="true"/>
         </property>
-        <property name="updateDate" type="timestamp">
+        <property generated="never" lazy="false"  name="updateDate" type="timestamp" unique="false">
             <column length="19" name="update_date" not-null="true"/>
         </property>
     </class>
