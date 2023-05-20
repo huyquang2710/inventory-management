@@ -17,26 +17,26 @@
                 <!-- search start -->
                 <div class="container" style="padding: 5px;">
                   <form:form modelAttribute="searchForm" cssClass="form-horizontal form-label-left" servletRelativeAction="/product-in-stock/list/1" method="POST">
-							<div class="form-group">
+							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="code">Code </label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<form:input path="productInfo.code" cssClass="form-control col-md-7 col-xs-12" />
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="code">Category</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<form:input path="productInfo.category.name" cssClass="form-control col-md-7 col-xs-12" />
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name </label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<form:input path="productInfo.name" cssClass="form-control col-md-7 col-xs-12" />
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="item form-group">
 								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 									<button type="submit" class="btn btn-success">Search</button>
 								</div>

@@ -35,4 +35,10 @@ public class Constant {
 	public static final String JPG = "jpg";
 
 	public static final String PNG = "png";
+
+	public static final Integer TYPE_GOODS_RECEIPT = 1;
+	
+	public static final Integer TYPE_GOODS_ISSUES = 2;
+	
+	public static final Integer TYPE_ALL = 0;
 }
